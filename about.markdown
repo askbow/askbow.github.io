@@ -4,4 +4,4 @@ title: About
 permalink: /about/
 ---
 
-Placeholder!🐱‍👤🐱‍👤🐱‍👤
+Placeholder!🐱‍👤🐱‍👤🐱‍👤   
