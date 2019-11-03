@@ -18,10 +18,10 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Askbow
-email: your-email@example.com
+title: 🐱‍👤Askbow
+email: NULL
 description: >- # this means to ignore newlines until "baseurl:"
-  Nothing yet.
+  Lorem ipsum generator is broken.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: askbow
