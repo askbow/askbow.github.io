@@ -2,7 +2,7 @@
 layout: post
 title:  "How many spares do you need?"
 date:   2018-05-11 16:08:00 +0100
-categories: sandbox
+categories: design, high_availability
 ---
 In designing a network, there is a question that is often missing an answer or at best, answered using some rule-of-thumb. How many spare units you should include in your BOM? Actually, do you need them at all?
 

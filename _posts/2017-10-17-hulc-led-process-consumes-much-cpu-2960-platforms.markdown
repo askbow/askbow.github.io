@@ -2,7 +2,7 @@
 layout: post
 title:  "Why Hulc LED process consumes so much CPU on 2960 platforms?"
 date:   2017-10-17 14:51:00 +0100
-categories: sandbox
+categories: switching
 ---
 In this post I\'ll try to make an educated guess about what happens with Hulc LED process and why it appears to consume 20-30% CPU on Cisco 2960(S/X/XR/RX) switches.
 
