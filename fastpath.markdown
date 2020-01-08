@@ -5114,3 +5114,18 @@ Good short read on the problem and its implications for security.
 Paper: [https://eprint.iacr.org/2020/014.pdf](https://eprint.iacr.org/2020/014.pdf)
 
 #research #infosec
+
+
+### 19.43
+
+[https://www.reuters.com/article/us-internet-domain-sale/internet-nonprofit-leaders-fight-deal-to-sell-control-of-org-domain-idUSKBN1Z62MW](https://www.reuters.com/article/us-internet-domain-sale/internet-nonprofit-leaders-fight-deal-to-sell-control-of-org-domain-idUSKBN1Z62MW)
+
+continuation of a story where a group of people found a "perfectly lawful" way to profit off non-profit
+
+their scheme is:
+1. using their regulatory power remove price limits from .org
+2. sell management rights to a private firm owned by their friends
+3. ...
+4. PROFIT!
+
+#internet #business #policy
