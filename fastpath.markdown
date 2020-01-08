@@ -5099,3 +5099,18 @@ _“The team behind Pensando has worked together for more than 25 years and have
 if you need some device profiles for your #cisco ISE  
   
 #infosec
+
+
+08 January 2020
+---------------
+
+### 08:40
+
+[https://sha-mbles.github.io/](https://sha-mbles.github.io/)
+
+SHA-1 is now broken, the attack was made practical by this group, with cost below 100k$, prognosed to become ~10k$ in the near future
+Good short read on the problem and its implications for security.
+
+Paper: [https://eprint.iacr.org/2020/014.pdf](https://eprint.iacr.org/2020/014.pdf)
+
+#research #infosec
