@@ -5129,3 +5129,16 @@ their scheme is:
 4. PROFIT!
 
 #internet #business #policy
+
+
+29 January 2020
+---------------
+
+### 1
+
+[https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html](https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html)
+
+if you've ever wondered why /in sensible programming languages/ arrays start at 0
+(besides the obvious memory addressing mechanics)
+
+#research 
