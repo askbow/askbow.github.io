@@ -4179,3 +4179,15 @@ if you've ever wondered why /in sensible programming languages/ arrays start at 
 (besides the obvious memory addressing mechanics)
 
 #research
+
+
+08 February 2020
+----------------
+
+### [https://thespinoff.co.nz/partner/chorus/04-02-2020/ten-years-older-and-a-whole-lot-faster-a-short-history-of-ufb1/](https://thespinoff.co.nz/partner/chorus/04-02-2020/ten-years-older-and-a-whole-lot-faster-a-short-history-of-ufb1/)
+
+there are two key parts to this story:
+1. the local economy benefits from fast internet access
+2. the local economy benefits from splitting regional telecom monopoly 
+
+#internet #business #policy
