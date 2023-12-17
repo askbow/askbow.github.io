@@ -63,10 +63,11 @@ In 2010, a new authentication type was added - the SHA2 HMAC. In 2011 the advanc
 
 **Classic metrics** are a well-studied beast: minimum Bandwidth, sum of Delays and (disabled by default) link Reliability and Load. These vector metrics are weighted using the K-values and mixed in the following formula to calculate the Composite Metric: 
 
-$$CM = [(k_1 \times Bandwidth + \frac{K_2 \times Bandwidth}{256 - Load} + (K_3 \times Delay)) \times \frac{K_5}{K_4 + Relyability}] \times 256 $$
+$$ CM = [(k_1 \times Bandwidth + \frac{K_2 \times Bandwidth}{256 - Load} + (K_3 \times Delay)) \times \frac{K_5}{K_4 + Relyability}] \times 256 $$
 
 here, 
-$$ Bandwidth = \frac{10^7}{minimum bandwidth} $$
+
+$$Bandwidth = \frac{10^7}{MinBandwidth}$$
 
 $$Delay = \frac{\sum delays}{10 ms} $$
 
@@ -74,7 +75,7 @@ Load, Reliability $\in [0;255]$ and $K_5=0,~~ \frac{K_5}{K_4 + Reliability} = 1$
 
 **Wide metrics** are more intricate. They still employ the same basic vectors, but mix them in a very different bowl, so to say:
 
-$$WM = [ (k_1 \times Throughput 
+$$ WM = [ (k_1 \times Throughput 
           + \frac{K_2 \times Throughput}{256 - Load} 
           + (K_3 \times Latency) 
           + (K_6 \times Extended) )
@@ -83,17 +84,17 @@ $$WM = [ (k_1 \times Throughput
 
 here, throughput is calculated using maximum theoretical throughput:
 
-$$MaxThroughput = (K_1 \times \frac{EIGRP_{BANDWIDTH} \times EIGRP_{WIDESCALE}}{Bandwith})$$
+$$ MaxThroughput = K_1 \times \frac{EIGRP_{BANDWIDTH} \times EIGRP_{WIDESCALE}}{Bandwith} $$
 
-$$NetThroughput = [MaxThroughput + (\\frac{K_2 \\times MaxThroughput}{256 - Load})] $$
+$$NetThroughput = [MaxThroughput + (\frac{K_{2}\times MaxThroughput}{256 - Load})]$$
 
 These values are only used by the local router. Original numbers are sent to neighbours. The Latency here is calculated using 
 
-$$Latency = k_3 \times \frac{Delay \times EIGRP_{WIDESCALE}}{EIGRP_{DELAYPICO}} $$
+$$ Latency = k_3 \times \frac{Delay \times EIGRP_{WIDESCALE}}{EIGRP_{DELAYPICO}} $$
 
 where, for interfaces under 1 Gbps, Delay is:
 
-$$Delay = InterfaceDelay \times EIGRP_{DELAYPICO}$$
+$$ Delay = InterfaceDelay \times EIGRP_{DELAYPICO}$$
 
 and for interfaces beyond 1 Gbps:
 
