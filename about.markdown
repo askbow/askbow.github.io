@@ -4,11 +4,9 @@ title: About
 permalink: /about/
 ---
 
-My name is Denis Borchev, I am a networking engineer.
+Hello there! My name is Denis, I am a distributed systems engineer with a focus on networking.
 
 ### Other means of contact
-
-Twitter: [@askbow](https://twitter.com/askbow)
 
 LinkedIn: [https://linkedin.com/in/dborchev](https://linkedin.com/in/dborchev)
 
