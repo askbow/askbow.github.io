@@ -4,6 +4,7 @@ title:  "General IP Routing"
 date:   2015-04-06 17:40:00 +0100
 categories: routing
 math: true
+mermaid: true
 ---
 Internet Protocol Routing, nowadays commonly known as L3 Switching, is part of the process of forwarding an IP packet from Source to Destination. Interestingly, it happens more often then commonly understood: even on a common subnet we often need to make an IP routing decision.
 
@@ -11,7 +12,17 @@ Internet Protocol Routing, nowadays commonly known as L3 Switching, is part of t
 
 Let\'s suppose that routing process is a black box:
 
-[![Routing](https://askbow.com/wp-content/uploads/2015/04/blackboxrouting.png)](https://askbow.com/wp-content/uploads/2015/04/blackboxrouting.png)
+```mermaid
+
+flowchart LR
+
+I(Ingres) -->|daddr| R{Routing Decision}
+R -->|in A| A[Egress 1]
+R -->|in B| B[Egress 2]
+R -->|in C| C[Egress 3]
+R -->|else| D[Drop]
+
+```
 
 Basically, we are taking some kind of function $R$, which takes a packet as an input and puts a packet to the output. Or not (more about that not further). The interesting thing here is that there are several outputs and each of them serves a set of destinations. The function in question, in fact, gives us the direction as a result.
 
@@ -19,7 +30,7 @@ Basically, we are taking some kind of function $R$, which takes a packet as an i
 
 So, our function might look like this:
 
-$$R(INPUT) = \Bigg\left\{\begin{array}{l r}Direction_1 &\text{if } INPUT_{destaddr}\text{ }\in A\Direction_2&\text{if }INPUT_{destaddr}\text{ }\in B\\ \end{array}$$
+$$R(Ingres) = \Bigg\left\{\begin{array}{l r}Direction_1 &\text{if } INPUT_{destaddr}\text{ }\in A\Direction_2&\text{if }INPUT_{destaddr}\text{ }\in B\\ \end{array}$$
 
 Here, we have two additional sets: $A$ and $B$. If the destaddr (destination address) part of the INPUT is part of the set A, the INPUT will be sent in the $Direction_1$
 
