@@ -13,7 +13,7 @@ Let\'s suppose that routing process is a black box:
 
 [![Routing](https://askbow.com/wp-content/uploads/2015/04/blackboxrouting.png)](https://askbow.com/wp-content/uploads/2015/04/blackboxrouting.png)
 
-Basically, we are taking some kind of function [latex]R[/latex], which takes a packet as an input and puts a packet to the output. Or not (more about that not further). The interesting thing here is that there are several outputs and each of them serves a set of destinations. The function in question, in fact, gives us the direction as a result.
+Basically, we are taking some kind of function $R$, which takes a packet as an input and puts a packet to the output. Or not (more about that not further). The interesting thing here is that there are several outputs and each of them serves a set of destinations. The function in question, in fact, gives us the direction as a result.
 
 > Thus, the routing decision is made on a per-destination basis and the routing decision is a vector towards destination.
 
