@@ -30,11 +30,7 @@ Basically, we are taking some kind of function $R$, which takes a packet as an i
 
 So, our function might look like this:
 
-$$ R(Ingres) = \Bigg\left\{
-               \begin{array}{l r}
-               Egress_1 & if Ingres_{destaddr} \in A \\
-               Egress_2 & if Ingres_{destaddr} \in B \\
-               Egress_3 & if Ingres_{destaddr} \in C \end{array} $$
+$$ R(Ingres) = \Bigg\left\{ $$
 
 Here, we have two additional sets: $A$ and $B$. If the destaddr (destination address) part of the Ingres is part of the set A, the Ingres will be sent in the $Egress_1$
 
