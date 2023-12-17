@@ -32,12 +32,11 @@ So, our function might look like this:
 
 $$ R(Ingres) = \Bigg\left\{
                \begin{array}{l r}
-               Egress_1 & if INPUT_{destaddr} \in A \\
-               Egress_2 & if INPUT_{destaddr} \in B \\
-               Egress_3 & if INPUT_{destaddr} \in C \\
-               \end{array} $$
+               Egress_1 & if Ingres_{destaddr} \in A \\
+               Egress_2 & if Ingres_{destaddr} \in B \\
+               Egress_3 & if Ingres_{destaddr} \in C \end{array} $$
 
-Here, we have two additional sets: $A$ and $B$. If the destaddr (destination address) part of the INPUT is part of the set A, the INPUT will be sent in the $Egress_1$
+Here, we have two additional sets: $A$ and $B$. If the destaddr (destination address) part of the Ingres is part of the set A, the Ingres will be sent in the $Egress_1$
 
 So far, so good. Well, not quite so, as there are two problems with this notation:
 
@@ -46,7 +45,7 @@ So far, so good. Well, not quite so, as there are two problems with this notatio
 
 The solution to the first question is that the set which is the most specific, that is - contains less elements of all the destination sets, is selected.
 
-For example, if $A = {a_1, a_2,a_3,a_4}$ and $B = {a_1,\dots,a_{255}}$ and $INPUT_{destaddr}=a_3$, then the first Direction will be used.
+For example, if $A = {a_1, a_2,a_3,a_4}$ and $B = {a_1,\dots,a_{255}}$ and $Ingres_{destaddr}=a_3$, then the first Direction will be used.
 
 And as for the case of the destination address being in none of our sets, the result must be to destroy the input:
 
