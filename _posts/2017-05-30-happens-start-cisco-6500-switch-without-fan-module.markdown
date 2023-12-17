@@ -17,17 +17,14 @@ That\'s not exactly the case:
 1. right away, as the CPUs heated up, the system became slow to respond to direct console connection
 2. in a minute, I\'ve got these logs:
 
-`*May 30 07:24:53.619: %C6KENV-SW2_SP-4-INSUFFCOOL: Module 1 cannot be adequately cooled`
-
-`*May 30 07:24:53.707: %C6KENV-SW2_SP-4-INSUFFCOOL: Module 3 cannot be adequately cooled`
-
-`*May 30 07:24:55.539: %C6KENV-SW2_SP-4-FANCOUNTFAILED: Required number of fan trays is not present`
-
-`*May 30 07:25:20.215: %C6KENV-SW2_SP-4-MINORTEMPALARM: switch 2 RP 5/0 inlet temperature crossed threshold #1(=50C. It has exceeded normal operating temperature range.`
-
-`*May 30 07:27:07.183: %C6KENV-SW2_SP-4-MINORTEMPALARM: switch 2 module 5 asic-1 temperature crossed threshold #1(=. It has exceeded normal operating temperature range.`
-
-`*May 30 07:27:26.387: %C6KENV-SW2_SP-4-MINORTEMPALARM: switch 2 EARL 5/0 outlet temperature crossed threshold #1(=. It has exceeded normal operating temperature range.`
+```
+*May 30 07:24:53.619: %C6KENV-SW2_SP-4-INSUFFCOOL: Module 1 cannot be adequately cooled
+*May 30 07:24:53.707: %C6KENV-SW2_SP-4-INSUFFCOOL: Module 3 cannot be adequately cooled
+*May 30 07:24:55.539: %C6KENV-SW2_SP-4-FANCOUNTFAILED: Required number of fan trays is not present
+*May 30 07:25:20.215: %C6KENV-SW2_SP-4-MINORTEMPALARM: switch 2 RP 5/0 inlet temperature crossed threshold #1(=50C. It has exceeded normal operating temperature range.
+*May 30 07:27:07.183: %C6KENV-SW2_SP-4-MINORTEMPALARM: switch 2 module 5 asic-1 temperature crossed threshold #1(=. It has exceeded normal operating temperature range
+*May 30 07:27:26.387: %C6KENV-SW2_SP-4-MINORTEMPALARM: switch 2 EARL 5/0 outlet temperature crossed threshold #1(=. It has exceeded normal operating temperature range
+```
 
 In short, it took a minute w/o fans for the test system to start overheating.
 
