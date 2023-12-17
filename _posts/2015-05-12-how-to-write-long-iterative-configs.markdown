@@ -4,6 +4,10 @@ title:  "How to write long iterative configs"
 date:   2015-05-12 14:23:00 +0100
 categories: automation
 ---
+
+> Note: I wrote this in 2015, just starting with network automation.
+> Nowadays, use jinja2 or bottle
+
 Sometimes there is a problem: you need to write a really repetitive config with hundreds of nodes. Clear example would be dial peers in Cisco routers. It is immensely hard and dull to do this by hand or copy+paste. Here\'s a simple python script to do it for you.
 
 ## Iterative config generation
@@ -21,8 +25,8 @@ The config template is basically a multi-line string, which stores the config al
 
 Here\'s an example of dial-peer configuration for CUBE used in my script:
 
-```
-CONFIG_TEMPLATE_ITERATIVE = dial-peer voice {sequence} voip 
+```python
+CONFIG_TEMPLATE_ITERATIVE = '''dial-peer voice {sequence} voip 
 description {description} 
 preference 1 
 destination-pattern {pattern} 
@@ -30,7 +34,7 @@ session protocol sipv2
 session target ipv4:{ip} 
 dtmf-relay rtp-nte 
 codec g711alaw 
-no vad 
+no vad'''
 ```
 
 Here, the
@@ -82,9 +86,9 @@ The script has two main procedures:
 1. main() - as the name suggests, this is the main part which reads the data file, writes the resulting config and iteratively calls the
 2. configblock(dataline) procedure takes the iterative part of the template (stored in CONFIG_TEMPLATE_ITERATIVE) and formats it (in my case - replaces {tags} with respective fields from the dictionary.
 
-The configblock(dataline) procedure is very simple:
+The `configblock(dataline)` procedure is very simple:
 
-```
+```python
 def configblock(dataline):
   config = CONFIG_TEMPLATE_ITERATIVE
   return config.format(**dataline)
@@ -92,13 +96,13 @@ def configblock(dataline):
 
 That\'s all. Here the procedure just returns the result of
 
-```
+```python
 .format()
 ```
 
 method of a string variable. This could even be done in-line at the main procedure, but I sacrificed a little efficiency for a little more readability. And here\'s how the main() procedure goes (I removed the lines concerned with the little user interface the script has, as they are not crucial for the script\'s work):
 
-```
+```python
 DataFileReader = csv.DictReader(open(r'data.csv'), delimiter=';')
 ```
 
@@ -107,14 +111,14 @@ First, the script reads the data file. The file is read into a list of dictionar
 1. It can be easily iterated through
 2. At each iteration we can find the iteration[\'tagname\'] (see further)
 
-```
+```python
   sequence = CONFIG_TEMPLATE_COUNTER['offset'] 
   config = CONFIG_TEMPLATE_ADD_BEFORE + \n
 ```
 
 Next, the sequence number variable (used later as a counter) is filled with an offset and the config variable (used to store script\'s results) is pre-populated with the CONFIG_TEMPLATE_ADD_BEFORE data.
 
-```
+```python
   for line in DataFileReader:
     line['sequence'] = str(sequence) 
     line.update(CONFIG_TEMPLATE_STATIC)   
@@ -130,13 +134,13 @@ Now, the main part. Here the iterative generation is performed:
 4. increment the sequence counter
 5. format new portion of iterative part of config (via configblock(line) ) and append it to the config variable
 
-```
+```python
   config = config + \n + CONFIG_TEMPLATE_ADD_AFTER
 ```
 
 Next, the tailing part of the config is added (in my case it is an empty string, so just a new line is added).
 
-```
+```python
   with open(r'config.conf','wb') as resultfile:
     resultfile.write(config)
 ```
@@ -151,7 +155,7 @@ Below I provide the code itself and some links for those who might find this sim
 
 configexpand.py
 
-```
+```python
 <pre class="lang:python" title="configexpand.py">import csv, time
 
 # to separate code and data, I load configs from this file:
@@ -185,8 +189,8 @@ if __name__ == '__main__':
 
 configtemplate.py
 
-```
-<pre class="lang:python" title="configtemplate.py"># example config generates dial-peers for Cisco VoIP gateways:
+```python
+# example config generates dial-peers for Cisco VoIP gateways:
 CONFIG_TEMPLATE_ITERATIVE = dial-peer voice {sequence} voip
  description {description}
  preference 1
