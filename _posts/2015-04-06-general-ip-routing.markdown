@@ -30,9 +30,14 @@ Basically, we are taking some kind of function $R$, which takes a packet as an i
 
 So, our function might look like this:
 
-$$R(Ingres) = \Bigg\left\{\begin{array}{l r}Direction_1 &\text{if } INPUT_{destaddr}\text{ }\in A\Direction_2&\text{if }INPUT_{destaddr}\text{ }\in B\\ \end{array}$$
+$$ R(Ingres) = \Bigg\left\{
+               \begin{array}{l r}
+               Egress_1 & if INPUT_{destaddr} \in A
+               Egress_2 & if INPUT_{destaddr} \in B
+               Egress_3 & if INPUT_{destaddr} \in C
+               \end{array} $$
 
-Here, we have two additional sets: $A$ and $B$. If the destaddr (destination address) part of the INPUT is part of the set A, the INPUT will be sent in the $Direction_1$
+Here, we have two additional sets: $A$ and $B$. If the destaddr (destination address) part of the INPUT is part of the set A, the INPUT will be sent in the $Egress_1$
 
 So far, so good. Well, not quite so, as there are two problems with this notation:
 
