@@ -3,6 +3,7 @@ layout: post
 title:  "General IP Routing"
 date:   2015-04-06 17:40:00 +0100
 categories: routing
+math: true
 ---
 Internet Protocol Routing, nowadays commonly known as L3 Switching, is part of the process of forwarding an IP packet from Source to Destination. Interestingly, it happens more often then commonly understood: even on a common subnet we often need to make an IP routing decision.
 
@@ -18,7 +19,7 @@ Basically, we are taking some kind of function [latex]R[/latex], which takes a p
 
 So, our function might look like this:
 
-`$$R(INPUT) = \Bigg\left\{\begin{array}{l r}Direction_1 &\text{if } INPUT_{destaddr}\text{ }\in A\\Direction_2&\text{if }INPUT_{destaddr}\text{ }\in B\\ \end{array}$$`
+$$R(INPUT) = \Bigg\left\{\begin{array}{l r}Direction_1 &\text{if } INPUT_{destaddr}\text{ }\in A\Direction_2&\text{if }INPUT_{destaddr}\text{ }\in B\\ \end{array}$$
 
 Here, we have two additional sets: $A$ and $B$. If the destaddr (destination address) part of the INPUT is part of the set A, the INPUT will be sent in the $Direction_1$
 
@@ -29,11 +30,11 @@ So far, so good. Well, not quite so, as there are two problems with this notatio
 
 The solution to the first question is that the set which is the most specific, that is - contains less elements of all the destination sets, is selected.
 
-For example, if $A = \\{a_1, a_2,a_3,a_4\\}$ and $B = \\{a_1,\\dots,a_{255}\\}$ and $INPUT_{destaddr}=a_3$, then the first Direction will be used.
+For example, if $A = {a_1, a_2,a_3,a_4}$ and $B = {a_1,\dots,a_{255}}$ and $INPUT_{destaddr}=a_3$, then the first Direction will be used.
 
 And as for the case of the destination address being in none of our sets, the result must be to destroy the input:
 
-`$$R(INPUT) = \Bigg\left\{\begin{array}{l l}Direction_1 &\quad\text{if } INPUT_{destaddr}\text{ }\in A\\Direction_2&\quad\text{if }INPUT_{destaddr}\text{ }\in B\\DROP&\quad\text{if } INPUT_{destaddr}\text{ }\notin ALL\text{, } ALL\supseteq\{A,B\}\\ \end{array}$$`
+$$R(INPUT) = \Bigg\left\{\begin{array}{l l}Direction_1 &\quad\text{if } INPUT_{destaddr}\text{ }\in A\\Direction_2&\quad\text{if }INPUT_{destaddr}\text{ }\in B\\DROP&\quad\text{if } INPUT_{destaddr}\text{ }\notin ALL\text{, } ALL\supseteq\{A,B\} \end{array}$$
 
 Basically, DROP here is just another Direction - the bit bucket, as some people call it.
 
@@ -41,13 +42,13 @@ The form I\'ve been using so far is far from being convenient. As some people mi
 
 ### The routing table
 
-Everything presented in $\\Latex$ so far may be described more conveniently as a table.
+Everything presented in $\Latex$ so far may be described more conveniently as a table.
 
 | $INPUT_{destaddr}$ | Direction |
 |---------------------|-----------|
-| $\\in A$ | Direction1 |
-| $\\in B$ | Direction2 |
-| $\\notin$A or B 
+| $\in A$ | Direction1 |
+| $\in B$ | Direction2 |
+| $\notin$A or B 
 (nowhere else) | bit bucket, e.g. DROP |
 
 This presentation is beneficial in that it efficiently shows a lot of destaddr-direction pairs in a uniform way. It doesn\'t matter that much when all we have is three simple routes. But consider the size of the Internet: at the time of this writing, the IPv4 routing table contains more than 500000 destination sets (i.e. networks).
