@@ -61,7 +61,7 @@ In 2005, support for EIGRP was added to PIX firewalls. EIGRP itself was updated 
 
 In 2010, a new authentication type was added - the SHA2 HMAC. In 2011 the advances in underlying transport technologies (yay, 100G Ethernet!) lead to the introduction of EIGRP Wide Metrics.
 
-> **Classic metrics** are a well-studied beast: minimum Bandwidth, sum of Delays and (disabled by default) link Reliability and Load. These vector metrics are weighted using the K-values and mixed in the following formula to calculate the Composite Metric: ` `
+> **Classic metrics** are a well-studied beast: minimum Bandwidth, sum of Delays and (disabled by default) link Reliability and Load. These vector metrics are weighted using the K-values and mixed in the following formula to calculate the Composite Metric: 
 > 
 > $$CM = [(k_1 \times Bandwidth + \frac{K_2 \times Bandwidth}{256 - Load} + (K_3 \times Delay)) \times \frac{K_5}{K_4 + Relyability}] \times 256 $$
 > 
@@ -81,7 +81,7 @@ In 2010, a new authentication type was added - the SHA2 HMAC. In 2011 the advanc
 > 
 > $$NetThroughput = [MaxThroughput + (\\frac{K_2 \\times MaxThroughput}{256 - Load})] $$
 > 
-> These values are only used by the local router. Original numbers are sent to neighbours. The Latency here is calculated using ` `
+> These values are only used by the local router. Original numbers are sent to neighbours. The Latency here is calculated using 
 > 
 > $$Latency = k_3 \times \frac{Delay \times EIGRP_{WIDESCALE}}{EIGRP_{DELAYPICO}} $$
 > 
@@ -89,6 +89,6 @@ In 2010, a new authentication type was added - the SHA2 HMAC. In 2011 the advanc
 > 
 > $$Delay = InterfaceDelay \times EIGRP_{DELAYPICO}$$
 > 
-> and for interfaces beyond 1 Gbps: ` `
+> and for interfaces beyond 1 Gbps:
 > 
 > $$Delay = \frac{EIGRP_{BANDWIDTH} \times EIGRP_{DELAYPICO}}{InterfaceBandwidth}$$
