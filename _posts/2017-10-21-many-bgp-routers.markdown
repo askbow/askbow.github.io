@@ -70,7 +70,35 @@ Where is it logical to put confederations in production? My guess would be, larg
 
 *Route reflectors* allow you to build a hierarchy of routers. A route-reflector client router doesn\'t know that it works with a route reflector - it\'s a normal iBGP peering for a client. Thus client\'s algorithm is the same as in fully-meshed iBGP system.
 
-[![](https://askbow.com/wp-content/uploads/2017/10/bgp-route-reflectors-300x198.png)](https://askbow.com/wp-content/uploads/2017/10/bgp-route-reflectors.png)
+```mermaid
+
+flowchart LR
+
+subgraph "RR-A"
+  A <-...-> A_1
+  A <-...-> A_2
+  A <-...-> A_3
+end
+
+subgraph "RR-B"
+
+  B <-...-> B_1
+  B <-...-> B_2
+  B <-...-> B_3
+end
+
+subgraph "RR-C"
+
+  C <-...-> C_1
+  C <-...-> C_2
+  C <-...-> C_3
+end
+
+A(A_RR) <-...-> B
+B(B_RR) <-...-> C
+A(C_RR) <-...-> C
+
+```
 
 A route reflector (RR) acts a little differently though. That is because its clients are not fully meshed. So, RR (*almost*) always sends updates to its clients, even when received from another client.
 
