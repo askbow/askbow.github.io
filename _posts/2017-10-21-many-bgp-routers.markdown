@@ -37,7 +37,26 @@ To overcome iBGP scalability problems, two approaches were developed:
 
 *Confederations* is basically splitting your AS into several sub-ASes. A confederated AS looks like a single entity to its eBGP peers, even though each individual router might belong to a different sub-AS.
 
-[![](https://askbow.com/wp-content/uploads/2017/10/bgp-confederations.png)](https://askbow.com/wp-content/uploads/2017/10/bgp-confederations.png)
+```mermaid
+
+flowchart LR
+
+
+subgraph "AS1"
+  C <-...-> D
+end
+
+subgraph "AS2"
+  A <-...-> B & C
+  B <-...-> C 
+end
+
+subgraph "AS3"
+  D <-...-> E & F
+  E <-...-> F
+end
+
+```
 
 Routers prevent loops inside confederation by using a special CONFED version of AS_PATH. Just like AS_PATH, its CONFED counterparts can be of two types: _SET and _SEQ.
 
