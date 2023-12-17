@@ -30,7 +30,10 @@ Basically, we are taking some kind of function $R$, which takes a packet as an i
 
 So, our function might look like this:
 
-$$ R(Ingres) = \Bigg\left\{ $$
+$$R(x=Ingres_{destaddr}) = \Bigg\{\begin{array}{l l r}
+               Egress_1 & if & x \in A \\
+               Egress_2 & if & x \in B \\
+               Egress_3 & if & x \in C \end{array} $$
 
 Here, we have two additional sets: $A$ and $B$. If the destaddr (destination address) part of the Ingres is part of the set A, the Ingres will be sent in the $Egress_1$
 
@@ -45,7 +48,11 @@ For example, if $A = {a_1, a_2,a_3,a_4}$ and $B = {a_1,\dots,a_{255}}$ and $Ingr
 
 And as for the case of the destination address being in none of our sets, the result must be to destroy the input:
 
-$$R(INPUT) = \Bigg\left\{\begin{array}{l l}Direction_1 &\quad\text{if } INPUT_{destaddr}\text{ }\in A\\Direction_2&\quad\text{if }INPUT_{destaddr}\text{ }\in B\\DROP&\quad\text{if } INPUT_{destaddr}\text{ }\notin ALL\text{, } ALL\supseteq\{A,B\} \end{array}$$
+$$R(x=Ingres_{destaddr}) = \Bigg\{\begin{array}{l l l}
+                                  Egress_1 & if & x \in A \\
+                                  Egress_2 & if & x \in B \\
+                                  Egress_3 & if & x \in C \\
+                                  DROP     & if & x \notin ALL\text{, } ALL\supseteq\{A,B\} \end{array}$$
 
 Basically, DROP here is just another Direction - the bit bucket, as some people call it.
 
@@ -53,12 +60,11 @@ The form I\'ve been using so far is far from being convenient. As some people mi
 
 ### The routing table
 
-Everything presented in $\Latex$ so far may be described more conveniently as a table.
-
-| $INPUT_{destaddr}$ | Direction |
+| $Ingres_{destaddr}$ | Direction |
 |---------------------|-----------|
-| $\in A$ | Direction1 |
-| $\in B$ | Direction2 |
+| $\in A$ | Egres 1 |
+| $\in B$ | Egres 2 |
+| $...$   | $...$   |
 | $\notin$A or B 
 (nowhere else) | bit bucket, e.g. DROP |
 
