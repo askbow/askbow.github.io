@@ -14,7 +14,9 @@ If you monitor your switch via SNMP, you may quickly notice constantly elevated 
 
 And the result looks something like this:
 
-[![](https://askbow.com/wp-content/uploads/2017/10/sh-proc-cpu-hulk-led-e1508217172316.png)](https://askbow.com/wp-content/uploads/2017/10/sh-proc-cpu-hulk-led.png)or what we could call **Angry Hulc** process ;-)
+[![](https://askbow.com/wp-content/uploads/2017/10/sh-proc-cpu-hulk-led-e1508217172316.png)](https://askbow.com/wp-content/uploads/2017/10/sh-proc-cpu-hulk-led.png  "sh proc cpu")
+
+or what we could call **Angry Hulc** process ;-)
 
 # What is Cisco HULC?
 
@@ -24,9 +26,8 @@ According to Cisco document 64641 (*it\'s public somewhere on cisco.com*):
 >  ...
 > **Lord Of The Rings (LOTR)** - The the first release of the HULC based platforms and software based on the Sasquatch ASIC chip set from DSBU. The Mirage is based on LOTR platforms from DSBU.
 
-(*N.B.: DSBU - Data Switching Business Unit, a part of Cisco*)
-
-> [*Also, notice LOTR reference;* for example, 4500 platform was built by Star Wars geeks]
+* N.B.: DSBU - Data Switching Business Unit, a part of Cisco*)
+* Also, notice the LOTR reference; for contrast, 4500 platform was built by Star Wars geeks
 
 A quick look around shows that a lot of stuff is based on that machinery, starting with 3750 / 3560 and 2960 series, but later included SMB series like Express 500 switches, industrial Ethernet series. I\'d also assume that some spoils of that development went into 3850, 4500, 6800IA and later systems.
 
@@ -44,7 +45,7 @@ We can also infer that commands under show platform stack talk directly to HULC.
 According to the description of the two most relevant Cisco bugs (CSCtg86211 and CSCtn42790), Hulc LED process is the thing that monitors port states, including PoE, transceiver (*think SFP*) status and sets the LED indicators accordingly. It also communicates with the MODE button, and resets the switch to factory default if you press it for too long:
 
 ```
-<pre class="lang:default" decode:true="">%SYS-7-NV_BLOCK_INIT: Initialized the geometry of nvram
+%SYS-7-NV_BLOCK_INIT: Initialized the geometry of nvram
 %SYS-5-RELOAD: Reload requested by Hulc LED Process. Reload Reason: Reason unspecified.
 ```
 
@@ -60,12 +61,12 @@ Here comes my theory. This might be completely bogus and is definitely based on 
 
 **Hulc LED process does not consume your CPU. It\'s an illusion created by processes\' waiting state.**
 
-Taking into account that much of today\'s IOS has Linux blood in it\'s veins, that\'s not hard to imagine. That way, the command show process cpu and its derivatives don\'t show us actual CPU usage, but something closer in spirit to Linux load average: a decaying average over three time windows, in case of Cisco IOS - 5 Sec, 1 Min, 5 Min.
+Taking into account that much of today\'s IOS has Linux blood in it\'s veins, that\'s not hard to imagine. That way, the command `show process cpu` and its derivatives don\'t show us actual CPU usage, but something closer in spirit to Linux load average: a decaying average over three time windows, in case of Cisco IOS - 5 Sec, 1 Min, 5 Min.
 
 If we[ look closely](https://github.com/torvalds/linux/blob/master/kernel/sched/loadavg.c) at how data points for calculating load average are collected,
 
-```
-<pre class="theme:github" decode:true="" lang:c="" title="https://github.com/torvalds/linux/blob/master/kernel/sched/loadavg.c">long calc_load_fold_active(struct rq *this_rq, long adjust)
+```c
+long calc_load_fold_active(struct rq *this_rq, long adjust)
 {
 	long nr_active, delta = 0;
 
