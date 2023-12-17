@@ -3,14 +3,15 @@ layout: post
 title:  "How many BGP routers can a big AS have?"
 date:   2017-10-21 13:52:00 +0100
 categories: routing, basics, bgp, design
+math: true
 ---
 For iBGP number of peers (*i.e. the number of BGP routers inside an AS*), the only significant limiting factor is that iBGP peers must be fully meshed (N.B.: not directly interconnected! An iBGP peering can span all the hops you can fit into the IP TTL field) - because it is the only way for iBGP to prevent loops.
 
 The impact of each BGP peer is an open TCP connection, some memory, and occasionally some processing to do and then some administrative burden.
 
-> *How many connections?*
+> How many connections?
 > 
-> *$latex \\frac{n \\times (n-1)}{2}$*
+> $$\frac{n \times (n-1)}{2}$$
 > 
 >  *- That\'s quadratic complexity:*
 
