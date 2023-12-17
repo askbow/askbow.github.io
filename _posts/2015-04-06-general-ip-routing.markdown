@@ -32,9 +32,9 @@ So, our function might look like this:
 
 $$ R(Ingres) = \Bigg\left\{
                \begin{array}{l r}
-               Egress_1 & if INPUT_{destaddr} \in A
-               Egress_2 & if INPUT_{destaddr} \in B
-               Egress_3 & if INPUT_{destaddr} \in C
+               Egress_1 & if INPUT_{destaddr} \in A \\
+               Egress_2 & if INPUT_{destaddr} \in B \\
+               Egress_3 & if INPUT_{destaddr} \in C \\
                \end{array} $$
 
 Here, we have two additional sets: $A$ and $B$. If the destaddr (destination address) part of the INPUT is part of the set A, the INPUT will be sent in the $Egress_1$
