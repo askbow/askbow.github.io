@@ -7,7 +7,7 @@ math: true
 ---
 I\'ve decided to listen to some advice and use blogging as a learning aid. And to begin with, I\'d like to tackle on the subject of EIGRP. It\'s no secret that EIGRP is Cisco\'s beloved proprietary (it is published as an IETF draft, but apparently public version lacks a feature or two) routing protocol, and thus it is the most discussed in Cisco Certification R&S Curriculum.
 
-> The timeline for this post is based on the contents of [BRKIPM-2444](https://www.ciscolive.com/online/connect/sessionDetail.ww?SESSION_ID=5994 "BRKIPM-2444") CiscoLive session.
+> The timeline for this post is based on the contents of BRKIPM-2444 CiscoLive session. Sadly, Cisco does not preserve historical content anymore, so I'm removing the dead link.
 
 # Begining of EIGRP
 
