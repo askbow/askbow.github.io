@@ -18,6 +18,7 @@ I hope to later find a good MD editor for Jekyl. Something sensible.
 
 Mermaid is a javascript library to draw diagrams directly in Markdown
 
+https://mermaid.live/
 
 ### A test diagram
 
@@ -33,6 +34,8 @@ graph TD;
 ## Mathjax? LaTeX?
 
 Mathjax is a framework that implements LaTeX rendering for the web. I use it to display nice formulas directly from Markdown.
+
+https://jbergknoff.github.io/mathjax-sandbox/
 
 ### A simple formula
 
