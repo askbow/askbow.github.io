@@ -3,6 +3,7 @@ layout: post
 title:  "Some notes on EIGRP history and metrics"
 date:   2015-03-25 18:45:54 +0100
 categories: routing
+math: true
 ---
 I\'ve decided to listen to some advice and use blogging as a learning aid. And to begin with, I\'d like to tackle on the subject of EIGRP. It\'s no secret that EIGRP is Cisco\'s beloved proprietary (it is published as an IETF draft, but apparently public version lacks a feature or two) routing protocol, and thus it is the most discussed in Cisco Certification R&S Curriculum.
 
