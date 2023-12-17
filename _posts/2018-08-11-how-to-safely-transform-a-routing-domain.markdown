@@ -44,6 +44,10 @@ Python to the rescue!
 
 The script I wrote to wrangle this task is on GitHub: [https://github.com/askbow/networking-tools/blob/master/routep.py](https://github.com/askbow/networking-tools/blob/master/routep.py)
 
+> Note: this is an old post; I wrote this script before TextFSM came to my attention; the script essentially implements a single-purpose finite-state-machine to parse text input ("screen-scraping").
+> Nowadays, just use TextFSM. 
+
+
 The basic idea of the script is this:
 
 1. load show ip route output from file
