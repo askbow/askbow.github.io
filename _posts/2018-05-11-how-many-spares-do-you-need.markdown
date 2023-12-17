@@ -3,6 +3,7 @@ layout: post
 title:  "How many spares do you need?"
 date:   2018-05-11 16:08:00 +0100
 categories: design, high_availability
+math: true
 ---
 In designing a network, there is a question that is often missing an answer or at best, answered using some rule-of-thumb. How many spare units you should include in your BOM? Actually, do you need them at all?
 
@@ -31,11 +32,11 @@ Availability in its general mathematical form depends on two factors:
 - MTBF - mean time between failures; many people confuse MTBF with how long a given specimen will work for. A better, more practical understanding of it goes like this: if a vendor has sold 1 000 000 units (*power supplies for example*) with MTBF 1 000 000 hours, then on average they will be sending one replacement unit every hour.
 - MTTR - mean time to recover [from failure] - how long it takes to fix a problem
 
-The availability is usually taken as A = \\frac{MTBF}{MTBF + MTTR} and the result might look something like 0.99818231.
+The availability is usually taken as $A = \frac{MTBF}{MTBF + MTTR}$ and the result might look something like 0.99818231.
 
 > There\'s a comprehensive article on that topic over at Packet Pushers: [Reliability Basics- Part1 by Diptanshu Singh](http://packetpushers.net/reliability-basics-part1/). There\'s no point in repeating all of that math background here.
 
-What it means in practical terms is, you can compute the expected (*notice expected - it\'s all a matter of statistics*) downtime by taking T_d = (1 - A) \\times T, where T is your time budget (*most people use a Gregorian year here, as expressed in minutes or seconds*).
+What it means in practical terms is, you can compute the expected (*notice expected - it\'s all a matter of statistics*) downtime by taking $T_d = (1 - A) \times T$, where $T$ is your time budget (*most people use a Gregorian year here, as expressed in minutes or seconds*).
 
 ### How do you increase your network availability?
 
@@ -141,18 +142,18 @@ There are two important metrics of spare part kits:
 
 #### Efficiency
 
-Efficiency can be calculated as Q = 1 - S / N, where S is the number of spares, and N is total number of devices protected with these spares. The higher - the better (*lower economic loss*).
+Efficiency can be calculated as $Q = 1 - S / N$, where $S$ is the number of spares, and N is total number of devices protected with these spares. The higher - the better (*lower economic loss*).
 
 #### Readiness
 
 Readiness is a little more complex. For waterline replenishment discipline it goes in two steps:
 
-1. calculate minimum spares needed as S_{min} = \\frac{N \\times T_t }{MTBF} - *see notes in the next section*
+1. calculate minimum spares needed as $S_{min} = \frac{N \times T_t }{MTBF}$ - *see notes in the next section*
 2. insert the result into this slightly bigger formula:
 
-R = 1 - \\frac{S_{min}^{m + 2}}{(S - m + S_{min})\\times((1 + S_{min})^{m + 1})}
+$$R = 1 - \frac{S_{min}^{m + 2}}{(S - m + S_{min})\times((1 + S_{min})^{m + 1})}$
 
-where S - your spares base level, m - your waterline level.
+where $S$ - your spares base level, $m$ - your waterline level.
 
 Obviously, you want your Spare Kit readiness as high as possible.
 
@@ -162,9 +163,9 @@ In practice, you would find your own balance between efficiency and readiness by
 
 This formula comes as a result of developments in mathematical modeling and queuing theories. By modeling spare parts kit as a queue and failure rate as Poisson independent events, it can be shown that for a general case:
 
-S_{min} = \\frac{N \\times T_t }{MTBF}
+$$S_{min} = \frac{N \times T_t }{MTBF}$$
 
-T_t here is the mean time it takes to replenish the kit, i.e. for the vendor to deliver on the contract (see above).
+$T_t$ here is the mean time it takes to replenish the kit, i.e. for the vendor to deliver on the contract (see above).
 
 > There\'s a side result from same sciences. We can say with high confidence that this kit will be optimal for many typical cases as well. That is, it maximizes both efficiency and readiness at the same time. I\'m not sure if this holds for all cases.
 
@@ -172,9 +173,11 @@ T_t here is the mean time it takes to replenish the kit, i.e. for the vendor to 
 
 How many spares would you need if you expect never to replenish the kit?
 
-S_T = T \\times N / MTBF, where T is total expected lifetime.
+$$S_T = T \times N / MTBF$$
 
-By taking 1/MTBF we effectively convert it to failure rate, which we then multiply by total system time budget (expressed in machine-hours).
+, where T is total expected lifetime.
+
+By taking $1/MTBF$ we effectively convert it to failure rate, which we then multiply by total system time budget (expressed in machine-hours).
 
 The result of this calculation is also the maximum number of spares. Between the minimum and this maximum, you must choose a point that makes sense to you. A good way to start is to set some expectations about the kit\'s readiness and efficiency and crunch the numbers, trying to maximize both.
 
